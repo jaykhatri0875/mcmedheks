@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <p1>Upload image to claasify</p1>
+<meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function previewFile(input){
+        var file = $("input[type=file]").get(0).files[0];
+ 
+        if(file){
+            var reader = new FileReader();
+ 
+            reader.onload = function(){
+                $("#previewImg").attr("src", reader.result);
+            }
+ 
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+</head> 
+<body>
+    
+    <form id="upload-file" action = "/success2"  method = "post" enctype="multipart/form-data">
+        <p>
+            <input type="file" name="file" onchange="previewFile(this);" required>
+        </p>
+        <img id="previewImg" alt="Placeholder">
+        <p>
+            <input type = "submit" value="Upload">
+        </p>
+    </form>
+    
+</body>
+</html>
